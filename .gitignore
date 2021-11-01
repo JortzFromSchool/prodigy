@@ -23,5 +23,9 @@
 /public/assets
 .byebug_history
 
+#noted on App Academy Open
+bundle.js
+/public/assets
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
