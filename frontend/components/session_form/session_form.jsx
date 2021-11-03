@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -36,11 +37,19 @@ class SessionForm extends React.Component {
     );
   }
 
+  whichLink() {
+    if(this.props.formType === "login") {
+      return (<Link to="/signup">or Sign Up</Link>)
+    } else {
+      return (<Link to="/login">or Log In</Link>)
+    }
+  }
+
   render() {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form">
-          {this.props.formType} or {this.props.link}
+          {this.props.formType} or {this.whichLink()}
           <div className="login-form-inputs">
             <br/>
             <label>Username:
