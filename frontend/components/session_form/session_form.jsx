@@ -36,7 +36,6 @@ class SessionForm extends React.Component {
     );
   }
 
-  //render modifed from BenchBnB solution
   render() {
     return (
       <div className="login-form-container">
