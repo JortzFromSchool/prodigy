@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTracks } from '../../util/track_api_util';
+import { fetchTracks } from '../../actions/track_actions';
 
 import TopTenTracks from './top_ten_tracks';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    fetchTracks: () => dispatch(fetchTracks)
+    fetchTracks: () => dispatch(fetchTracks())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopTenTracks);

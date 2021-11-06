@@ -16,16 +16,18 @@ import TopTenTracksContainer from './top_ten_tracks/top_ten_tracks_container';
 
 const App = () => (
     <div>
-      <header>
+      <header className="header">
+        <div className="header-search" />
         <Link to="/" className="header-link">
-          <h1>Prodigy</h1>
+          <h2>PRODIGY</h2>
         </Link>
         <GreetingContainer />
       </header>
-      <Switch>
-        <AuthRoute exact path="/login" component={LogInFormContainer} />
-        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      </Switch>
+      <div className="subheader"></div>
+        <Switch>
+          <AuthRoute exact path="/login" component={LogInFormContainer} />
+          <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+        </Switch>
       <TopTenTracksContainer />
     </div>
   );

@@ -150,10 +150,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+    className: "header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "header-search"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/",
     className: "header-link"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Prodigy")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.AuthRoute, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "PRODIGY")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "subheader"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__.AuthRoute, {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -192,10 +198,12 @@ var Greeting = function Greeting(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", {
       className: "login-signup-links"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/login"
-    }, "Login"), "or", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      className: "login-signup-item",
       to: "/signup"
-    }, "Sign up!"));
+    }, "Sign Up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      className: "login-signup-item",
+      to: "/login"
+    }, "Sign In"));
   };
 
   var userGreeting = function userGreeting() {
@@ -546,19 +554,22 @@ var TopTenIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props$track = this.props.track,
           title = _this$props$track.title,
-          artist_id = _this$props$track.artist_id,
+          artist = _this$props$track.artist,
           views = _this$props$track.views;
+      var index = this.props.index;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "top-ten-track-index-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "index-item-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        className: "index-title"
+        className: "index-item index-number"
+      }, index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "index-item index-title"
       }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        className: "index-artist-id"
-      }, artist_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-        className: "index-views"
-      }, toString(views))));
+        className: "index-item index-artist-id"
+      }, artist.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+        className: "index-item index-views"
+      }, views)));
     }
   }]);
 
@@ -632,13 +643,36 @@ var TopTenTracks = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Top Tracks"), this.asArray(this.props.tracks).map(function (track) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_top_ten_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          track: track,
-          key: track.id
-        });
-      }));
+    value: // asTrackIndexItem(track, index) {
+    //     return (
+    //         <li key={`index-${index}`}>
+    //             <TopTenIndexItem
+    //                 index={index}
+    //                 track={track}
+    //             />
+    //         </li>
+    //     )
+    // }
+    // generateTrackIndexItems() {
+    //     const tracksArr = this.asArray(this.props.tracks);
+    //     let listItems = null;
+    //     for (let i = 0; i < tracksArr.length ; i++) {
+    //         const track = tracksArr[i];
+    //         listItems += this.asTrackIndexItem(track, i);
+    //     };
+    //     return listItems;
+    // }
+    function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "top-ten-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "CHARTS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.asArray(this.props.tracks).map(function (track, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+          key: "index-".concat(index)
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_top_ten_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          index: index,
+          track: track
+        }));
+      })));
     }
   }]);
 
@@ -662,7 +696,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _util_track_api_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/track_api_util */ "./frontend/util/track_api_util.js");
+/* harmony import */ var _actions_track_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/track_actions */ "./frontend/actions/track_actions.js");
 /* harmony import */ var _top_ten_tracks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./top_ten_tracks */ "./frontend/components/top_ten_tracks/top_ten_tracks.jsx");
 
 
@@ -677,7 +711,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchTracks: function fetchTracks() {
-      return dispatch(_util_track_api_util__WEBPACK_IMPORTED_MODULE_1__.fetchTracks);
+      return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.fetchTracks)());
     }
   };
 };
@@ -695,6 +729,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "entitiesReducer": () => (/* binding */ entitiesReducer),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
@@ -703,10 +738,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+var entitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   tracks: _tracks_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
-}));
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (entitiesReducer);
 
 /***/ }),
 
@@ -852,11 +888,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var tracksReducer = function tracksReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // debugger
 
   switch (action.type) {
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TRACKS:
-      return action.tracks;
+      return Object.assign({}, state, action.tracks);
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TRACK:
       var newTrack = _defineProperty({}, action.track.id, action.track);

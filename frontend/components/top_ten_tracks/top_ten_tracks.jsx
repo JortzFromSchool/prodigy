@@ -14,16 +14,42 @@ class TopTenTracks extends React.Component {
         return Object.keys(tracks).map(track => tracks[track])
     };
 
+    // asTrackIndexItem(track, index) {
+    //     return (
+    //         <li key={`index-${index}`}>
+    //             <TopTenIndexItem
+    //                 index={index}
+    //                 track={track}
+    //             />
+    //         </li>
+    //     )
+    // }
+
+    // generateTrackIndexItems() {
+    //     const tracksArr = this.asArray(this.props.tracks);
+    //     let listItems = null;
+    //     for (let i = 0; i < tracksArr.length ; i++) {
+    //         const track = tracksArr[i];
+    //         listItems += this.asTrackIndexItem(track, i);
+    //     };
+    //     return listItems;
+    // }
+
     render() {
         return (
-            <div>
-                <h1>Top Tracks</h1>
-                {this.asArray(this.props.tracks).map(track => (
-                    <TopTenIndexItem 
-                        track={track}
-                        key={track.id}
-                    />
-                ))}
+            <div className="top-ten-container">
+                <h1>CHARTS</h1>
+                <ul>
+                    {this.asArray(this.props.tracks).map((track, index) => {
+                        return(
+                            <li key={`index-${index}`}>
+                                <TopTenIndexItem
+                                    index={index}
+                                    track={track}
+                                />
+                            </li>)
+                    })}
+                </ul>
             </div>
         )
     }

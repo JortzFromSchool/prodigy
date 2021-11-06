@@ -6,13 +6,15 @@ class TopTenIndexItem extends React.Component {
     }
 
     render() {
-        const {title, artist_id, views} = this.props.track;
+        const {title, artist, views} = this.props.track;
+        const index = this.props.index;
         return (
             <div className="top-ten-track-index-item">
                 <div className="index-item-info">
-                    <span className="index-title">{title}</span>
-                    <span className="index-artist-id">{artist_id}</span>
-                    <span className="index-views">{toString(views)}</span>
+                    <span className="index-item index-number">{index+1}</span>
+                    <span className="index-item index-title">{title}</span>
+                    <span className="index-item index-artist-id">{artist.username}</span>
+                    <span className="index-item index-views">{views}</span>
                 </div>
             </div>
         )

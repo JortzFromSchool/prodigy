@@ -1,0 +1,10 @@
+//font obtained from: https://www.cdnfonts.com/whitney-2.font
+@import url('http://fonts.cdnfonts.com/css/whitney-2');
+
+$font: 'Whitney', sans-serif;
+$font-bold: 'Whitney Semibold', sans-serif;
+$header-color: #ffff64;
+
+body {
+    font-family: $font;
+}
