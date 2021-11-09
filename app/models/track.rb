@@ -19,6 +19,8 @@
 class Track < ApplicationRecord
 
     validates :title, :artist_id, :lyrics, :album_id, :genre, presence: true
+    
+    has_one_attached :photo
 
     belongs_to :artist,
         foreign_key: :artist_id,

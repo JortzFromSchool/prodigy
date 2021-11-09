@@ -1,0 +1,116 @@
+@import "./variables.scss";
+
+.show-lyrics {
+    white-space: pre-line;
+}
+
+.show-description {
+    white-space: pre-wrap;
+}
+
+.show-header {
+    // background-image: var(--background-image);
+    background-size: 100% 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-background-image {
+    object-fit: cover;
+    width: 100%;
+    height: 330px;
+    position: absolute;
+    z-index: 1;
+    filter: brightness(60%);
+}
+
+.show-album-artwork {
+    border: $info-subtitles-color;
+    border-style: solid;
+    border-width: 2px;
+    height: 280px;
+    width: 280px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    z-index: 2;
+}
+
+.show-header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 50px;
+    z-index: 2;
+}
+
+.show-title {
+    color: $header-color;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.show-artist {
+    color: white;
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+}
+
+.show-producer  {
+    color: $info-subtitles-color;
+    margin-bottom: 5px;
+}
+
+.show-album {
+    color: $info-subtitles-color;
+}
+
+.show-stats {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: $info-subtitles-color;
+    margin-left: 100px;
+    margin-top: 200px;
+    font-size: 0.8rem;
+}
+
+.show-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: $page-background-color;
+    width: 100%;
+}
+
+.show-body-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: white;
+    width: 40%;
+}
+
+.show-left-column {
+    width: 400px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+.show-right-column {
+    width: 400px;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.show-lyrics {
+    font-size: 1.25rem;
+    line-height: 150%;
+    font-weight: 300;
+}
+
+.show-description {
+    line-height: 125%;
+}

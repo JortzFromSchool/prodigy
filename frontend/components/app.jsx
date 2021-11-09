@@ -12,19 +12,25 @@ import { AuthRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import TopTenTracksContainer from './top_ten_tracks/top_ten_tracks_container';
+import TrackShowContainer from './show_track/show_container';
 
 const App = () => (
     <div>
-      <header>
+      <header className="header">
+        <div className="header-search" />
         <Link to="/" className="header-link">
-          <h1>Prodigy</h1>
+          <h2>PRODIGY</h2>
         </Link>
         <GreetingContainer />
       </header>
-      <Switch>
-        <AuthRoute exact path="/login" component={LogInFormContainer} />
-        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      </Switch>
+      <div className="subheader"></div>
+        <Switch>
+          <AuthRoute exact path="/login" component={LogInFormContainer} />
+          <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+          <Route exact path="/tracks/:trackId" component={TrackShowContainer} />
+          <Route exact path="/" component={TopTenTracksContainer} />
+        </Switch>
     </div>
   );
   

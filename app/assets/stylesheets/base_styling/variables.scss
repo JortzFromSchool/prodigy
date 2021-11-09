@@ -1,0 +1,14 @@
+//font obtained from: https://www.cdnfonts.com/whitney-2.font
+@import url('http://fonts.cdnfonts.com/css/whitney-2');
+
+$font: 'Whitney', sans-serif;
+$font-bold: 'Whitney Semibold', sans-serif;
+$header-color: #ffff64;
+$info-subtitles-color: #9a9a9a;
+$page-background-color: #f7f7f7;
+
+$album-url: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Daft_Punk_-_Discovery.jpg/220px-Daft_Punk_-_Discovery.jpg';
+
+body {
+    font-family: $font;
+}
