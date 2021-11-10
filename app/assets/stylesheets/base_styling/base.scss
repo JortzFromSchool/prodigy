@@ -68,16 +68,70 @@ h1 {
     align-items: center;
     font-size: 1.5em;
     border-bottom: 2px solid grey;
+    width: 1100px;
 }
 
 .index-item-info {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     padding: 15px;
+}
+
+.track-link {
+    color:black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .index-item {
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.index-item:link {
+    color: black;
+    text-decoration: none;
+}
+
+.index-item:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.index-title {
+    width: 300px;
+    color: black;
+    text-decoration: none;
+}
+
+.index-title:link {
+    color: black;
+    text-decoration: none;
+}
+
+.index-title:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.index-artist {
+    width: 300px;
+}
+
+.index-artwork {
+    height: 60px;
+    width: 60px;
+}
+
+.index-number {
+    width: 50px;
+}
+
+.index-views {
+    width: 100px;
 }

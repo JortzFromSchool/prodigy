@@ -1,0 +1,63 @@
+@import "./variables.scss";
+
+.login-form-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.login-title {
+    color: white;
+    font-size: 3rem;
+    padding: 10px;
+}
+
+.username-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.username-info {
+    color: $page-background-color;
+    padding-bottom: 5px;
+}
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.password-info {
+    color: $page-background-color;
+    padding-bottom: 5px;
+}
+
+.alternate-form-link {
+    padding-top: 5px;
+}
+
+.alternate-form-link-text {
+    color: white;
+    padding-right: 5px;
+}
+
+.login-form-inputs {
+    background-color: #0e0e0e;
+}
+
+.login-form-submit-button {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}

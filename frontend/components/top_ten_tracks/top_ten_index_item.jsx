@@ -17,7 +17,7 @@ class TopTenIndexItem extends React.Component {
                         <span className="index-item index-number">{index+1}</span>
                         <img className="index-item index-artwork" src={album_url}/>
                         <span className="index-item index-title">{title}</span>
-                        <span className="index-item index-artist-id">{artist.username}</span>
+                        <span className="index-item index-artist">{artist.username}</span>
                         <span className="index-item index-views">{views}</span>
                     </Link>
                 </div>

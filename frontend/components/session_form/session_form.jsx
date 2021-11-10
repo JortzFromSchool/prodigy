@@ -39,36 +39,58 @@ class SessionForm extends React.Component {
 
   whichLink() {
     if(this.props.formType === "login") {
-      return (<Link to="/signup">or Sign Up</Link>)
+      return (
+        <div className="alternate-form-link">
+          <span className="alternate-form-link-text">Don't have an account?</span>
+          <Link to="/signup">Sign up here.</Link>
+        </div>)
     } else {
-      return (<Link to="/login">or Log In</Link>)
+      return (
+        <div className="alternate-form-link">
+          <span className="alternate-form-link-text">Already have an account?</span>
+          <Link to="/login">Log in Here.</Link>
+        </div>)
+    }
+  }
+
+  whichTitle() {
+    if(this.props.formType === "login") {
+      return (<span className="login-title">Sign In</span>)
+    } else {
+      return (<span className="login-title">Sign Up</span>)
     }
   }
 
   render() {
     return (
       <div className="login-form-container">
+        {this.whichTitle()}
         <form onSubmit={this.handleSubmit} className="login-form">
-          {this.props.formType} or {this.whichLink()}
           <div className="login-form-inputs">
             <br/>
-            <label>Username:
+            <div className="username-container">
+              <span className="username-info">Prodigy Username</span>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
               />
-            </label>
+            </div>
             <br/>
-            <label>Password:
+            <div className="password-container">
+              <span className="password-info">Password</span>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
-            </label>
+            </div>
             <br/>
-            <input type="submit" value={this.props.formType} />
+            {this.renderErrors()}
+            <div className="login-form-submit-button">
+              <input  type="submit" value={this.props.formType} />
+            </div>
           </div>
-          {this.renderErrors()}
+          {this.whichLink()}
+          
         </form>
       </div>
     );

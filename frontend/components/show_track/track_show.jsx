@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-
 import ShowContainer from './show_container';
+
 
 class TrackShow extends React.Component {
     constructor(props) {
@@ -10,6 +10,11 @@ class TrackShow extends React.Component {
 
     componentDidMount () {
         this.props.fetchTrack(this.props.trackId);
+        // const annotator = require("annotator");
+        // const app = new annotator.App();
+        // app.include(annotator.ui.main);
+        // app.include(annotator.storage.debug);
+        // app.start();
     }
 
     render() {
