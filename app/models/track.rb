@@ -15,6 +15,7 @@
 #  title        :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  album_url    :string
 #
 class Track < ApplicationRecord
 
@@ -29,4 +30,8 @@ class Track < ApplicationRecord
     belongs_to :producer,
         foreign_key: :producer_id,
         class_name: :User
+
+    has_many :annotations,
+        foreign_key: :track_id,
+        class_name: :Annotation
 end

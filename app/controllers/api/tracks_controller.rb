@@ -5,6 +5,6 @@ class Api::TracksController < ApplicationController
 
     def index
         # future revision: change this to 10, sorted by views
-        @tracks = Track.all
+        @tracks = Track.group(:id).order('views DESC').limit(10)
     end
 end

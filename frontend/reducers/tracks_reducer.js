@@ -1,4 +1,4 @@
-import { RECEIVE_TRACK, RECEIVE_TRACKS } from "../actions/track_actions";
+import { RECEIVE_TRACK, RECEIVE_TRACKS, RECEIVE_ANNOTATION } from "../actions/track_actions";
 
 const tracksReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -9,6 +9,13 @@ const tracksReducer = (state = {}, action) => {
         case RECEIVE_TRACK:
             const newTrack = { [action.track.id]: action.track};
             return Object.assign({}, state, newTrack);
+        case RECEIVE_ANNOTATION:
+            const {annotation} = action;
+            const newState = Object.assign({}, state);
+            //this might be wrong, inspect state in console
+            newState[annotation.track_id].annotationIds.push(annotation.id);
+            newState[annotation.track_id].annotations[annotation.id] = annotation;
+            return newState;
         default:
             return state;
     }

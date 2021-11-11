@@ -8,9 +8,11 @@ require 'open-uri'
 #   Character.create(name: 'Luke', movie: movies.first)
 User.delete_all
 Track.delete_all
+Annotation.delete_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!(:users)
 ActiveRecord::Base.connection.reset_pk_sequence!(:tracks)
+ActiveRecord::Base.connection.reset_pk_sequence!(:annotations)
 
 
 artist1 = User.create({username: "Daft Punk"})
@@ -226,4 +228,12 @@ track4.save!
 track5.save!
 track6.save!
 track7.save!
+
+annotationString1 = "Da funk back to the punk, c'mon";
+annotationBody1 = "It contains the lyrics “Da Funk Back to the Punk C'mon” and is repeated throughout the whole song. It also features some little elements from “Da Funk” (also the title is featured in the lyrics as seen before).
+
+The song gave the name to the promotional tour for Homework, in which mostly all the songs from the album were mixed."
+annotation1 = Annotation.create({author_id: artist1.id, track_id: track1.id, annotation_string: annotationString1, annotation_body: annotationBody1});
+
+annotation1.save!;
 

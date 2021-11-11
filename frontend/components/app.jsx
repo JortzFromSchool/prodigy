@@ -14,9 +14,11 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import TopTenTracksContainer from './top_ten_tracks/top_ten_tracks_container';
 import TrackShowContainer from './show_track/show_container';
+import Modal from './modal/modal';
 
 const App = () => (
     <div>
+      <Modal />
       <header className="header">
         <div className="header-search" />
         <Link to="/" className="header-link">
@@ -35,3 +37,4 @@ const App = () => (
   );
   
   export default App;
+

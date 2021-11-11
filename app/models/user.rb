@@ -26,6 +26,10 @@ class User < ApplicationRecord
     has_many :produced_tracks,
       foreign_key: :producer_id,
       class_name: :Track
+
+    has_many :annotations,
+      foreign_key: :author_id,
+      class_name: :Annotation
   
     def self.find_by_credentials(username, password)
       user = User.find_by(username: username)

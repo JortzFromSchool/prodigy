@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchTrack } from '../../actions/track_actions';
-
+import { fetchTrack} from '../../actions/track_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import TrackShow from './track_show';
 
 const mapStateToProps = (state, {match}) => {
@@ -11,8 +11,10 @@ const mapStateToProps = (state, {match}) => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
-    fetchTrack: (id) => dispatch(fetchTrack(id))
-});
+const mapDispatchToProps = dispatch => {
+    return {
+    fetchTrack: (id) => dispatch(fetchTrack(id)),
+    annotateForm: (annotateString, trackId) => (dispatch(openModal('annotate', annotateString, trackId)))
+}};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackShow);

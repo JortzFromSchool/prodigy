@@ -3,12 +3,11 @@ import {Link} from 'react-router-dom';
 
 class TopTenIndexItem extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
         const {title, artist, views, id, album_url} = this.props.track;
-        console.log(album_url);
         const index = this.props.index;
         return (
             <div className="top-ten-track-index-item">
