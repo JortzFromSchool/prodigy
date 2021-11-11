@@ -1118,7 +1118,6 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
             producer_id = _this$props$tracks$th.producer_id,
             genre = _this$props$tracks$th.genre;
         var annotations = this.props.tracks[this.props.trackId].annotations;
-        debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "show-component"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -1599,10 +1598,9 @@ var tracksReducer = function tracksReducer() {
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ANNOTATION:
       var annotation = action.annotation;
-      var newState = Object.assign({}, state); //this might be wrong, inspect state in console
-
-      newState[annotation.track_id].annotationIds.push(annotation.id);
-      newState[annotation.track_id].annotations[annotation.id] = annotation;
+      var newState = Object.assign({}, state);
+      debugger;
+      newState[annotation.track.id].annotations[annotation.id] = annotation;
       return newState;
 
     default:

@@ -12,9 +12,8 @@ const tracksReducer = (state = {}, action) => {
         case RECEIVE_ANNOTATION:
             const {annotation} = action;
             const newState = Object.assign({}, state);
-            //this might be wrong, inspect state in console
-            newState[annotation.track_id].annotationIds.push(annotation.id);
-            newState[annotation.track_id].annotations[annotation.id] = annotation;
+            debugger;
+            newState[annotation.track.id].annotations[annotation.id] = annotation;
             return newState;
         default:
             return state;

@@ -25,7 +25,6 @@ class TrackShow extends React.Component {
         if(this.props.tracks[this.props.trackId]) {
             const {title, artist, album_url, producer, views, lyrics, description, release_date, album_id, track_number, producer_id, genre} = this.props.tracks[this.props.trackId];
             const {annotations} = this.props.tracks[this.props.trackId];
-            debugger
             return(
                 <div className="show-component">
                     <div className="show-header">
