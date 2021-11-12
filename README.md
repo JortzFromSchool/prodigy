@@ -20,6 +20,8 @@ Prodigy is a website that allows you to look at and annotate the lyrics of your 
 
 # Future Additions:
 * Articles
+* Homepage Featuring Articles and Top Users
+* User Show Page
 * Comments
 * User Likes
 * Responsive Annotation Show Linked to Text
