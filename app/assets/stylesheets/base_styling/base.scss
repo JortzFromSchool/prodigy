@@ -159,3 +159,26 @@ h1 {
     color: $info-subtitles-color;
     padding: 10px;
 }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    font-size: .5rem;
+    color: white;
+    padding: 3px;
+}
+
+.github-link {
+    height: 20px;
+    width: 20px;
+}

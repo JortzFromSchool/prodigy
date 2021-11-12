@@ -23,7 +23,7 @@ class TrackShow extends React.Component {
     render() {
         
         if(this.props.tracks[this.props.trackId]) {
-            const {title, artist, album_url, producer, views, lyrics, description, release_date, album_id, track_number, producer_id, genre} = this.props.tracks[this.props.trackId];
+            const {title, artist, album_url, producer, views, lyrics, description, release_date, album_name, track_number, producer_id, genre} = this.props.tracks[this.props.trackId];
             const {annotations} = this.props.tracks[this.props.trackId];
             return(
                 <div className="show-component">
@@ -34,7 +34,7 @@ class TrackShow extends React.Component {
                             <span className="show-title">{title}</span>
                             <span className="show-artist">{artist.username}</span>
                             <span className="show-producer">Produced by {producer.username}</span>
-                            <span className="show-album">Album {album_id}</span>
+                            <span className="show-album">Album {album_name}</span>
                         </div>
                         <div className="show-stats">
                             <span className="show-views">{views}</span>

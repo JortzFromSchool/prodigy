@@ -45,10 +45,12 @@ class AnnotationForm extends React.Component{
                         <span className="annotation-string">"{this.state.annotation_string}"</span>
                         <div className="annotation-body-container">
                             <span className="annotation-body-info">Prodigy Annotation:</span>
-                            <input type="textarea"
-                                value={this.state.annotation_body}
-                                onChange={this.update('annotation_body')}
-                            />
+                            <div className="annotation-textarea-container">
+                                <input type="textarea"
+                                    value={this.state.annotation_body}
+                                    onChange={this.update('annotation_body')}
+                                />
+                            </div>
                         </div>
                         <div className="annotation-form-submit-button">
                             <input type="submit" value="Create Annotation" />

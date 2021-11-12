@@ -19,7 +19,7 @@
 #
 class Track < ApplicationRecord
 
-    validates :title, :artist_id, :lyrics, :album_id, :genre, presence: true
+    validates :title, :artist_id, :lyrics, :album_name, :genre, presence: true
     
     has_one_attached :photo
 

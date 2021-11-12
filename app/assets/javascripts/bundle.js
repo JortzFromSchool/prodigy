@@ -233,7 +233,20 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _top_ten_tracks_top_ten_tracks_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer-text"
+  }, "Lyrics, Images and Annotations taken from Genius.com"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer-text"
+  }, "'Whitney' Font from cdnfonts.com"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "footer-text"
+  }, "CSS Reset from meyerweb.com"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://github.com/JortzFromSchool/prodigy"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "github-link",
+    src: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -778,11 +791,13 @@ var AnnotationForm = /*#__PURE__*/function (_React$Component) {
         className: "annotation-body-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
         className: "annotation-body-info"
-      }, "Prodigy Annotation:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, "Prodigy Annotation:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "annotation-textarea-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "textarea",
         value: this.state.annotation_body,
         onChange: this.update('annotation_body')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "annotation-form-submit-button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
@@ -1122,7 +1137,7 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
             lyrics = _this$props$tracks$th.lyrics,
             description = _this$props$tracks$th.description,
             release_date = _this$props$tracks$th.release_date,
-            album_id = _this$props$tracks$th.album_id,
+            album_name = _this$props$tracks$th.album_name,
             track_number = _this$props$tracks$th.track_number,
             producer_id = _this$props$tracks$th.producer_id,
             genre = _this$props$tracks$th.genre;
@@ -1144,7 +1159,7 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
           className: "show-producer"
         }, "Produced by ", producer.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
           className: "show-album"
-        }, "Album ", album_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, "Album ", album_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "show-stats"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
           className: "show-views"

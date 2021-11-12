@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_221612) do
+ActiveRecord::Schema.define(version: 2021_11_12_013440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_11_10_221612) do
     t.text "lyrics", null: false
     t.text "description"
     t.date "release_date"
-    t.integer "album_id", null: false
+    t.string "album_name", null: false
     t.integer "track_number"
     t.integer "producer_id"
     t.integer "views"

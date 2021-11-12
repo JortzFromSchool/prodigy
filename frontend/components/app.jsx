@@ -33,6 +33,14 @@ const App = () => (
           <Route exact path="/tracks/:trackId" component={TrackShowContainer} />
           <Route exact path="/" component={TopTenTracksContainer} />
         </Switch>
+        <div className="footer">
+          <div className="footer-text">Lyrics, Images and Annotations taken from Genius.com</div>
+          <div className="footer-text">'Whitney' Font from cdnfonts.com</div>
+          <div className="footer-text">CSS Reset from meyerweb.com</div>
+          <a href="https://github.com/JortzFromSchool/prodigy">
+            <img className="github-link" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"/>
+          </a>
+        </div>
     </div>
   );
   
