@@ -25,3 +25,4 @@ Prodigy is a website that allows you to look at and annotate the lyrics of your 
 * Comments
 * User Likes
 * Responsive Annotation Show Linked to Text
+* Track Search Bar
