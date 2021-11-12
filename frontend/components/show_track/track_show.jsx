@@ -47,7 +47,7 @@ class TrackShow extends React.Component {
                                 <span className="show-lyrics" onMouseUp={this.handleHighlight}>{lyrics}</span>
                             </div>
                             <div className="show-right-column">
-                                <span className="show-description">{description}</span>
+                                <div className="show-description">{description}</div>
                                 <ShowAnnotations annotations={annotations} />
                             </div>
                         </div>

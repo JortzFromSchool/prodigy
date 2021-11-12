@@ -37,12 +37,14 @@ class AnnotationForm extends React.Component{
         return (
             <div className="annotation-form-container">
                 <form onSubmit={this.handleSubmit} className="annotation-form-box">
-                    <span className="new-annotation-header">New Annotation</span>
-                    <div onClick={this.props.closeModal} className="close-icon">X</div>
+                    <div className="annotation-form-header">
+                        <div className="new-annotation-title">New Annotation</div>
+                        <div onClick={this.props.closeModal} className="close-icon">X</div>
+                    </div>
                     <div className="annotation-form-inputs">
-                        <span className="annotation-string">{this.state.annotation_string}</span>
+                        <span className="annotation-string">"{this.state.annotation_string}"</span>
                         <div className="annotation-body-container">
-                            <span className="annotation-body-info">Annotation</span>
+                            <span className="annotation-body-info">Prodigy Annotation:</span>
                             <input type="textarea"
                                 value={this.state.annotation_body}
                                 onChange={this.update('annotation_body')}

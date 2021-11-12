@@ -11,10 +11,15 @@ class AnnotationIndexItem extends React.Component {
 
         return (
             <div className="annotation-index-item">
-                <div className="annotation-info">
-                    <span className="annotation-string">{annotation_string}</span>
-                    <span className="annotation-body">{annotation_body}</span>
-                    <span className="annotation-author">{author.username}</span>
+                <div className="annotation-index-info">
+                    <div className="annotation-index-header">
+                        <div className="annotation-index-title">Prodigy Annotation</div>
+                        <div className="annotation-index-author">by {author.username}</div>
+                    </div>
+                    <div className="annotation-index-string-container">
+                        <div className="annotation-index-string">"{annotation_string}"</div>
+                    </div>
+                    <div className="annotation-index-body">{annotation_body}</div>
                 </div>
             </div>
         )

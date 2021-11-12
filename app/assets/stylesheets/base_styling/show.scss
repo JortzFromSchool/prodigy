@@ -76,6 +76,10 @@
     font-size: 0.8rem;
 }
 
+.show-views {
+    color: $info-subtitles-color;
+}
+
 .show-body {
     display: flex;
     flex-direction: row;
@@ -113,4 +117,123 @@
 
 .show-description {
     line-height: 125%;
+    padding: 5px;
+}
+
+.annotation-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $annotation-background-color;
+}
+
+.annotation-form-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.new-annotation-title {
+    font-size: 1.25rem;
+    margin: 5px;
+}
+
+.close-icon {
+    margin: 5px;
+    border: solid black 1px;
+}
+
+.annotation-form-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.annotation-body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.annotation-string {
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.annotation-body-info {
+    padding: 5px;
+    font-size: .5rem;
+}
+
+.annotation-textarea-container {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.annotation-form-submit-button {
+    padding: 5px;
+}
+
+.annotations-container {
+    background: $annotation-background-color;
+    margin-top: 20px;
+}
+
+.annotations-header {
+    font-size: .8rem;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+.annotation-index-item {
+    padding: 5px;
+}
+
+.annotation-index-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: black solid 1px;
+}
+
+.annotation-index-header {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-between;
+    width: inherit;
+}
+
+.annotation-index-title {
+    font-size: .6rem;
+}
+
+.annotation-index-author {
+    font-size: .6rem;
+    font-weight: bold;
+}
+
+.annotation-index-string-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.annotation-index-string {
+    font-weight: bold;
+    font-size: .7rem;
+}
+
+.annotation-index-body {
+    padding: 5px;
+    font-size: .8rem;
 }

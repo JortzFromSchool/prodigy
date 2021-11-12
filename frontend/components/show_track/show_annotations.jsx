@@ -9,7 +9,7 @@ class ShowAnnotations extends React.Component {
     render() {
         return (
             <div className="annotations-container">
-                <span className="annotations-header">Annotations</span>
+                <div className="annotations-header">Prodigy Annotations</div>
                 <ul>
                     {this.props.annotations.map((annotation, index) => {
                         return(

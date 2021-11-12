@@ -26,6 +26,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .login-signup-item:visited {
@@ -36,6 +37,24 @@
 
 .login-signup-item {
     padding: 10px;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.user-greeting-logout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.username-header {
+    padding: 10px;
+}
+
+.logout-button {
+    margin-right: 10px;
 }
 
 .subheader {
@@ -134,4 +153,9 @@ h1 {
 
 .index-views {
     width: 100px;
+}
+
+.session-errors {
+    color: $info-subtitles-color;
+    padding: 10px;
 }
