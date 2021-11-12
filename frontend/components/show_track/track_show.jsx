@@ -16,8 +16,10 @@ class TrackShow extends React.Component {
     }
 
     handleHighlight () {
-        const highlightedText = window.getSelection().toString()
-        this.props.annotateForm(highlightedText, this.props.trackId);
+        const highlightedText = window.getSelection().toString();
+        if(highlightedText){
+            this.props.annotateForm(highlightedText, this.props.trackId);
+        };
     }
 
     render() {

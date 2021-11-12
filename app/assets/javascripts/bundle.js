@@ -1122,7 +1122,12 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
     key: "handleHighlight",
     value: function handleHighlight() {
       var highlightedText = window.getSelection().toString();
-      this.props.annotateForm(highlightedText, this.props.trackId);
+
+      if (highlightedText) {
+        this.props.annotateForm(highlightedText, this.props.trackId);
+      }
+
+      ;
     }
   }, {
     key: "render",
