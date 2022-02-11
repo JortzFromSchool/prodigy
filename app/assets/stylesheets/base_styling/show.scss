@@ -242,3 +242,19 @@
     padding: 5px;
     font-size: .8rem;
 }
+
+.annotation-upvotes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.annotation-index-upvote-count {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.annotation-downthumb-container {
+    margin-top: 6px;
+}

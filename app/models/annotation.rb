@@ -22,4 +22,8 @@ class Annotation < ApplicationRecord
         foreign_key: :track_id,
         class_name: :Track
 
+    has_many :upvotes,
+        foreign_key: :annotation_id,
+        class_name: :Upvote
+
 end

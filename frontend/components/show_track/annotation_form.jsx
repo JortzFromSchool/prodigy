@@ -4,9 +4,6 @@ import { withRouter } from 'react-router';
 class AnnotationForm extends React.Component{
     constructor(props) {
         super(props);
-        console.log(`annotation string = ${this.props.annotateString}`);
-        console.log(`user id = ${this.props.session.id}`);
-        console.log(`track id = ${this.props.trackId}`);
         this.state = {
             author_id: this.props.session.id,
             track_id: this.props.modal.trackId,

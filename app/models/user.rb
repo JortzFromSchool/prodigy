@@ -30,6 +30,10 @@ class User < ApplicationRecord
     has_many :annotations,
       foreign_key: :author_id,
       class_name: :Annotation
+
+    has_many :upvotes,
+      foreign_key: :author_id,
+      class_name: :Upvote
   
     def self.find_by_credentials(username, password)
       user = User.find_by(username: username)

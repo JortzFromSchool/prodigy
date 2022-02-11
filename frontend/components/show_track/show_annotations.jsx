@@ -1,5 +1,5 @@
 import React from 'react';
-import AnnotationIndexItem from './annotation_index_item';
+import AnnotationIndexItemContainer from './annotation_index_item_container';
 
 class ShowAnnotations extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ShowAnnotations extends React.Component {
                     {this.props.annotations.map((annotation, index) => {
                         return(
                             <li key={`annotation-${index}`}>
-                                <AnnotationIndexItem
+                                <AnnotationIndexItemContainer
                                     index={index}
                                     annotation={annotation}
                                 />

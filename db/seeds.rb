@@ -9,10 +9,12 @@ require 'open-uri'
 User.delete_all
 Track.delete_all
 Annotation.delete_all
+Upvote.delete_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!(:users)
 ActiveRecord::Base.connection.reset_pk_sequence!(:tracks)
 ActiveRecord::Base.connection.reset_pk_sequence!(:annotations)
+ActiveRecord::Base.connection.reset_pk_sequence!(:upvotes)
 
 
 artist1 = User.create({username: "Daft Punk"})
@@ -855,4 +857,6 @@ The song gave the name to the promotional tour for Homework, in which mostly all
 annotation1 = Annotation.create({author_id: artist1.id, track_id: track1.id, annotation_string: annotationString1, annotation_body: annotationBody1});
 
 annotation1.save!;
+
+upvote1 = Upvote.create({author_id: artist1.id, annotation_id: annotation1.id, value: 1})
 

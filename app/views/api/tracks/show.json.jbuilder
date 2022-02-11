@@ -10,6 +10,13 @@ end
         json.set! annotation.id do
             json.partial! 'api/annotations/annotation', annotation: annotation
             json.author annotation.author
+            annotation.upvotes.each do |upvote|
+                json.upvotes do
+                    json.set! upvote.id do
+                        json.partial! 'api/upvotes/upvote', upvote: upvote
+                    end
+                end
+            end
         end
     end
 end
