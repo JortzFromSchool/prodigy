@@ -2,6 +2,10 @@ class Api::AnnotationsController < ApplicationController
 
     before_action :require_logged_in
 
+    def show
+        @annotation = Annotation.find(params[:id])
+    end
+
     def create
         @annotation = current_user.annotations.new(annotation_params)
 

@@ -1,5 +1,9 @@
 class Api::UpvotesController < ApplicationController
 
+    def show
+        @upvote = Upvote.find(params[:id])
+    end
+
     def create
         @upvote = current_user.upvotes.new(upvote_params)
 

@@ -1,1 +1,2 @@
-json.extract! annotation, :id, :author, :track, :upvotes, :annotation_string, :annotation_body
+json.extract! annotation, :id, :author, :track, :annotation_string, :annotation_body
+

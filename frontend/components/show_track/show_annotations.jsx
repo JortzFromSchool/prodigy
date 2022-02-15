@@ -11,7 +11,7 @@ class ShowAnnotations extends React.Component {
             <div className="annotations-container">
                 <div className="annotations-header">Prodigy Annotations</div>
                 <ul>
-                    {this.props.annotations.map((annotation, index) => {
+                    {Object.values(this.props.annotations).map((annotation, index) => {
                         return(
                             <li key={`annotation-${index}`}>
                                 <AnnotationIndexItemContainer

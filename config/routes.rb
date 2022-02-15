@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :tracks, only: [:index, :show]
     resources :annotations, only: [:show, :create, :destroy]
-    resources :upvotes, only: [:create, :destroy, :update]
+    resources :upvotes, only: [:show, :create, :destroy, :update]
+    resources :comments, only: [:show, :create, :destroy]
   end
   
   root "static_pages#root"

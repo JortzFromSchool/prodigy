@@ -26,4 +26,8 @@ class Annotation < ApplicationRecord
         foreign_key: :annotation_id,
         class_name: :Upvote
 
+    has_many :comments,
+        foreign_key: :annotation_id,
+        class_name: :Comment
+
 end

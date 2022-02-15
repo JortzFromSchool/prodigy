@@ -14183,6 +14183,7 @@ var fetchTracks = function fetchTracks() {
 };
 var fetchTrack = function fetchTrack(id) {
   return function (dispatch) {
+    console.log("inside fetch track id = ".concat(id));
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchTrack(id).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -15179,7 +15180,7 @@ var ShowAnnotations = /*#__PURE__*/function (_React$Component) {
         className: "annotations-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "annotations-header"
-      }, "Prodigy Annotations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.props.annotations.map(function (annotation, index) {
+      }, "Prodigy Annotations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, Object.values(this.props.annotations).map(function (annotation, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: "annotation-".concat(index)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_annotation_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -15300,6 +15301,7 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
   _createClass(TrackShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log("fetching track");
       this.props.fetchTrack(this.props.trackId);
     }
   }, {
