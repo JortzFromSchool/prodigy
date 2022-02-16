@@ -10,18 +10,22 @@ class AnnotationIndexItem extends React.Component {
     }
 
     handleUpvote(){
-        console.log("in handleUpvote");
+        // console.log("handleUpvote");
+        console.log(this.props.annotation);
         const upvotesArr = Object.values(this.props.annotation.upvotes);
+        // console.log(upvotesArr);
         let upvoteExists = false;
         let upvoteValue = 0;
         let upvoteId = -1;
         for(let i = 0; i < upvotesArr.length; i++){
             if(upvotesArr[i].author_id == this.props.session.id){
+                // console.log("existing upvote found");
                 upvoteExists = true;
                 upvoteValue = upvotesArr[i].value;
                 upvoteId = upvotesArr[i].id;
             }
         };
+        // console.log(`upvoteExists = ${upvoteExists}`);
         if(!upvoteExists){
             console.log("creating upvote")
             const upvoteData = new FormData();
@@ -67,9 +71,9 @@ class AnnotationIndexItem extends React.Component {
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', -1);
-            console.log(`track id should be 7: ${this.props.annotation.track.id}`);
-            console.log(`annotation id should be 1: ${this.props.annotation.id}`);
-            console.log(`upvoteId: ${upvoteId}`);
+            // console.log(`track id should be 7: ${this.props.annotation.track.id}`);
+            // console.log(`annotation id should be 1: ${this.props.annotation.id}`);
+            // console.log(`upvoteId: ${upvoteId}`);
             this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
                 .then(() => this.props.createUpvote(upvoteData));
         };

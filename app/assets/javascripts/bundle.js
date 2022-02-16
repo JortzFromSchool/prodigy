@@ -14183,7 +14183,6 @@ var fetchTracks = function fetchTracks() {
 };
 var fetchTrack = function fetchTrack(id) {
   return function (dispatch) {
-    console.log("inside fetch track id = ".concat(id));
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchTrack(id).then(function (track) {
       return dispatch(receiveTrack(track));
     });
@@ -14933,21 +14932,24 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
     value: function handleUpvote() {
       var _this2 = this;
 
-      console.log("in handleUpvote");
-      var upvotesArr = Object.values(this.props.annotation.upvotes);
+      // console.log("handleUpvote");
+      console.log(this.props.annotation);
+      var upvotesArr = Object.values(this.props.annotation.upvotes); // console.log(upvotesArr);
+
       var upvoteExists = false;
       var upvoteValue = 0;
       var upvoteId = -1;
 
       for (var i = 0; i < upvotesArr.length; i++) {
         if (upvotesArr[i].author_id == this.props.session.id) {
+          // console.log("existing upvote found");
           upvoteExists = true;
           upvoteValue = upvotesArr[i].value;
           upvoteId = upvotesArr[i].id;
         }
       }
 
-      ;
+      ; // console.log(`upvoteExists = ${upvoteExists}`);
 
       if (!upvoteExists) {
         console.log("creating upvote");
@@ -15010,11 +15012,11 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
         _upvoteData2.append('upvote[annotation_id]', this.props.annotation.id);
 
-        _upvoteData2.append('upvote[value]', -1);
+        _upvoteData2.append('upvote[value]', -1); // console.log(`track id should be 7: ${this.props.annotation.track.id}`);
+        // console.log(`annotation id should be 1: ${this.props.annotation.id}`);
+        // console.log(`upvoteId: ${upvoteId}`);
 
-        console.log("track id should be 7: ".concat(this.props.annotation.track.id));
-        console.log("annotation id should be 1: ".concat(this.props.annotation.id));
-        console.log("upvoteId: ".concat(upvoteId));
+
         this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
           return _this3.props.createUpvote(_upvoteData2);
         });
@@ -15301,7 +15303,6 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
   _createClass(TrackShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("fetching track");
       this.props.fetchTrack(this.props.trackId);
     }
   }, {
@@ -15819,9 +15820,8 @@ var tracksReducer = function tracksReducer() {
       return newState;
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_UPVOTE:
-      var upvote = action.upvote; //const newState = Object.assign({}, state);
-
-      newState[upvote.annotation.track.id].annotations[upvote.annotation.id].upvotes[upvote.id] = upvote;
+      var upvote = action.upvote;
+      newState[upvote.annotation.track_id].annotations[upvote.annotation.id].upvotes[upvote.id] = upvote;
       return newState;
 
     case _actions_track_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_UPVOTE:

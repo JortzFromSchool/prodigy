@@ -12,7 +12,6 @@ class TrackShow extends React.Component {
     }
 
     componentDidMount () {
-        console.log("fetching track");
         this.props.fetchTrack(this.props.trackId);
     }
 

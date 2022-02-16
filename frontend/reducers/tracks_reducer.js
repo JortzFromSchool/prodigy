@@ -16,8 +16,7 @@ const tracksReducer = (state = {}, action) => {
             return newState;
         case RECEIVE_UPVOTE:
             const {upvote} = action;
-            //const newState = Object.assign({}, state);
-            newState[upvote.annotation.track.id].annotations[upvote.annotation.id].upvotes[upvote.id] = upvote;
+            newState[upvote.annotation.track_id].annotations[upvote.annotation.id].upvotes[upvote.id] = upvote;
             return newState;
         case REMOVE_UPVOTE:
             const {upvoteId, annotationId, trackId} = action;

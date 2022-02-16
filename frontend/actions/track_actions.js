@@ -66,8 +66,7 @@ export const fetchTracks = () => dispatch => (
     ))
 );
 
-export const fetchTrack = id => dispatch => {
-    console.log(`inside fetch track id = ${id}`);
-    return TrackAPIUtil.fetchTrack(id).then(track => {
+export const fetchTrack = id => dispatch => (
+    TrackAPIUtil.fetchTrack(id).then(track => {
         return dispatch(receiveTrack(track));}
-    )};
+    ));
