@@ -17,6 +17,7 @@ class ShowAnnotations extends React.Component {
                                 <AnnotationIndexItemContainer
                                     index={index}
                                     annotation={annotation}
+                                    trackId={this.props.trackId}
                                 />
                             </li>
                     )})}

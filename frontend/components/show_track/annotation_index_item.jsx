@@ -18,30 +18,35 @@ class AnnotationIndexItem extends React.Component {
         let upvoteValue = 0;
         let upvoteId = -1;
         for(let i = 0; i < upvotesArr.length; i++){
-            if(upvotesArr[i].author_id == this.props.session.id){
-                // console.log("existing upvote found");
+            if(this.props.session.id && upvotesArr[i].author.id == this.props.session.id){
+                console.log("existing upvote found");
                 upvoteExists = true;
                 upvoteValue = upvotesArr[i].value;
                 upvoteId = upvotesArr[i].id;
             }
         };
+        if(this.props.session.id && upvoteExists && upvoteValue > 0){
+            // logged in, upvote already exists and is positive
+            this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
+                .then(() => this.props.fetchTrack(this.props.trackId));
+        }
         // console.log(`upvoteExists = ${upvoteExists}`);
-        if(!upvoteExists){
-            console.log("creating upvote")
+        else if(!upvoteExists && this.props.session.id){
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', 1);
-            this.props.createUpvote(upvoteData);
+            this.props.createUpvote(upvoteData)
+                .then(() => this.props.fetchTrack(this.props.trackId));
         }
-        else if(upvoteExists && upvoteValue < 0 && upvoteId >= 0){
-            console.log("changing to upvote")
+        else if(this.props.session.id && upvoteExists && upvoteValue < 0 && upvoteId >= 0){
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', 1);
             this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
-                .then(() => this.props.createUpvote(upvoteData));
+                .then(() => this.props.createUpvote(upvoteData))
+                .then(() => this.props.fetchTrack(this.props.trackId));
         };
     }
 
@@ -51,31 +56,36 @@ class AnnotationIndexItem extends React.Component {
         let upvoteValue = 0;
         let upvoteId = -1;
         for(let i = 0; i < upvotesArr.length; i++){
-            if(upvotesArr[i].author_id == this.props.session.id){
+            if(this.props.session.id && upvotesArr[i].author.id == this.props.session.id){
                 upvoteExists = true;
                 upvoteValue = upvotesArr[i].value;
                 upvoteId = upvotesArr[i].id;
             }
         };
-        if(!upvoteExists){
-            console.log("creating downvote")
+        if(this.props.session.id && upvoteExists && upvoteValue < 0){
+            // logged in, upvote already exists and is negative
+            this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
+                .then(() => this.props.fetchTrack(this.props.trackId));
+        }
+        if(!upvoteExists && this.props.session.id){
+            //upvote does not exist and user is logged in
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', -1);
-            this.props.createUpvote(upvoteData);
+            this.props.createUpvote(upvoteData)
+                .then(() => this.props.fetchTrack(this.props.trackId));
         }
-        else if(upvoteExists && upvoteValue > 0 && upvoteId >= 0){
+        else if(this.props.session.id && upvoteExists && upvoteValue > 0 && upvoteId >= 0){
+            //upvote is positive and user is logged in
             console.log("changing to downvote")
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', -1);
-            // console.log(`track id should be 7: ${this.props.annotation.track.id}`);
-            // console.log(`annotation id should be 1: ${this.props.annotation.id}`);
-            // console.log(`upvoteId: ${upvoteId}`);
             this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
-                .then(() => this.props.createUpvote(upvoteData));
+                .then(() => this.props.createUpvote(upvoteData))
+                .then(() => this.props.fetchTrack(this.props.trackId));
         };
     }
 

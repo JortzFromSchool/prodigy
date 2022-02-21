@@ -50,7 +50,7 @@ class TrackShow extends React.Component {
                             </div>
                             <div className="show-right-column">
                                 <div className="show-description">{description}</div>
-                                <ShowAnnotations annotations={annotations} />
+                                <ShowAnnotations annotations={annotations} trackId={this.props.trackId}/>
                             </div>
                         </div>
                     </div>

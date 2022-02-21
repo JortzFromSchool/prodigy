@@ -14941,26 +14941,31 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
       var upvoteId = -1;
 
       for (var i = 0; i < upvotesArr.length; i++) {
-        if (upvotesArr[i].author_id == this.props.session.id) {
-          // console.log("existing upvote found");
+        if (this.props.session.id && upvotesArr[i].author.id == this.props.session.id) {
+          console.log("existing upvote found");
           upvoteExists = true;
           upvoteValue = upvotesArr[i].value;
           upvoteId = upvotesArr[i].id;
         }
       }
 
-      ; // console.log(`upvoteExists = ${upvoteExists}`);
+      ;
 
-      if (!upvoteExists) {
-        console.log("creating upvote");
+      if (this.props.session.id && upvoteExists && upvoteValue > 0) {
+        // logged in, upvote already exists and is positive
+        this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
+          return _this2.props.fetchTrack(_this2.props.trackId);
+        });
+      } // console.log(`upvoteExists = ${upvoteExists}`);
+      else if (!upvoteExists && this.props.session.id) {
         var upvoteData = new FormData();
         upvoteData.append('upvote[author_id]', this.props.session.id);
         upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
         upvoteData.append('upvote[value]', 1);
-        this.props.createUpvote(upvoteData);
-      } else if (upvoteExists && upvoteValue < 0 && upvoteId >= 0) {
-        console.log("changing to upvote");
-
+        this.props.createUpvote(upvoteData).then(function () {
+          return _this2.props.fetchTrack(_this2.props.trackId);
+        });
+      } else if (this.props.session.id && upvoteExists && upvoteValue < 0 && upvoteId >= 0) {
         var _upvoteData = new FormData();
 
         _upvoteData.append('upvote[author_id]', this.props.session.id);
@@ -14971,6 +14976,8 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
         this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
           return _this2.props.createUpvote(_upvoteData);
+        }).then(function () {
+          return _this2.props.fetchTrack(_this2.props.trackId);
         });
       }
 
@@ -14987,7 +14994,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
       var upvoteId = -1;
 
       for (var i = 0; i < upvotesArr.length; i++) {
-        if (upvotesArr[i].author_id == this.props.session.id) {
+        if (this.props.session.id && upvotesArr[i].author.id == this.props.session.id) {
           upvoteExists = true;
           upvoteValue = upvotesArr[i].value;
           upvoteId = upvotesArr[i].id;
@@ -14996,14 +15003,24 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
       ;
 
-      if (!upvoteExists) {
-        console.log("creating downvote");
+      if (this.props.session.id && upvoteExists && upvoteValue < 0) {
+        // logged in, upvote already exists and is negative
+        this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
+          return _this3.props.fetchTrack(_this3.props.trackId);
+        });
+      }
+
+      if (!upvoteExists && this.props.session.id) {
+        //upvote does not exist and user is logged in
         var upvoteData = new FormData();
         upvoteData.append('upvote[author_id]', this.props.session.id);
         upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
         upvoteData.append('upvote[value]', -1);
-        this.props.createUpvote(upvoteData);
-      } else if (upvoteExists && upvoteValue > 0 && upvoteId >= 0) {
+        this.props.createUpvote(upvoteData).then(function () {
+          return _this3.props.fetchTrack(_this3.props.trackId);
+        });
+      } else if (this.props.session.id && upvoteExists && upvoteValue > 0 && upvoteId >= 0) {
+        //upvote is positive and user is logged in
         console.log("changing to downvote");
 
         var _upvoteData2 = new FormData();
@@ -15012,13 +15029,12 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
         _upvoteData2.append('upvote[annotation_id]', this.props.annotation.id);
 
-        _upvoteData2.append('upvote[value]', -1); // console.log(`track id should be 7: ${this.props.annotation.track.id}`);
-        // console.log(`annotation id should be 1: ${this.props.annotation.id}`);
-        // console.log(`upvoteId: ${upvoteId}`);
-
+        _upvoteData2.append('upvote[value]', -1);
 
         this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
           return _this3.props.createUpvote(_upvoteData2);
+        }).then(function () {
+          return _this3.props.fetchTrack(_this3.props.trackId);
         });
       }
 
@@ -15118,6 +15134,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteUpvote: function deleteUpvote(upvoteId, annotationId, trackId) {
       return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.deleteUpvote)(upvoteId, annotationId, trackId));
+    },
+    fetchTrack: function fetchTrack(trackId) {
+      return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.fetchTrack)(trackId));
     }
   };
 };
@@ -15178,6 +15197,8 @@ var ShowAnnotations = /*#__PURE__*/function (_React$Component) {
   _createClass(ShowAnnotations, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "annotations-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -15187,7 +15208,8 @@ var ShowAnnotations = /*#__PURE__*/function (_React$Component) {
           key: "annotation-".concat(index)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_annotation_index_item_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
           index: index,
-          annotation: annotation
+          annotation: annotation,
+          trackId: _this.props.trackId
         }));
       })));
     }
@@ -15372,7 +15394,8 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "show-description"
         }, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_annotations__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          annotations: annotations
+          annotations: annotations,
+          trackId: this.props.trackId
         })))));
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
