@@ -1,12 +1,15 @@
 import * as TrackAPIUtil from '../util/track_api_util';
 import * as AnnotationAPIUtil from '../util/annotation_api_util';
 import * as UpvoteAPIUtil from '../util/upvote_api_util';
+import * as CommentAPIUtil from '../util/comment_api_util';
 
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ANNOTATION = "RECEIVE_ANNOTATION";
 export const RECEIVE_UPVOTE = "RECEIVE_UPVOTE";
 export const REMOVE_UPVOTE = "REMOVE_UPVOTE";
+export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const receiveTracks = tracks => ({
     type: RECEIVE_TRACKS,
@@ -36,6 +39,18 @@ export const removeUpvote = (upvoteId, annotationId, trackId) => ({
     trackId
 });
 
+export const receiveComment = ({comment}) => ({
+    type: RECEIVE_COMMENT,
+    comment
+});
+
+export const removeComment = (commentId, annotationId, trackId) => ({
+    type: REMOVE_COMMENT,
+    commentId,
+    annotationId,
+    trackId
+});
+
 export const createAnnotation = annotation => dispatch => (
     AnnotationAPIUtil.createAnnotation(annotation).then(annotation => (
         dispatch(receiveAnnotation(annotation))
@@ -49,7 +64,7 @@ export const createUpvote = upvote => dispatch => (
 );
 
 export const deleteUpvote = (upvoteId, annotationId, trackId) => dispatch => (
-    UpvoteAPIUtil.deleteUpvote(upvoteId).then(upvoteId => (
+    UpvoteAPIUtil.deleteUpvote(upvoteId).then(() => (
         dispatch(removeUpvote(upvoteId, annotationId, trackId))
     ))
 );
@@ -57,6 +72,24 @@ export const deleteUpvote = (upvoteId, annotationId, trackId) => dispatch => (
 export const updateUpvote = (upvote, upvoteId) => dispatch => (
     UpvoteAPIUtil.updateUpvote(upvote, upvoteId).then(upvote => (
         dispatch(receiveUpvote(upvote))
+    ))
+);
+
+export const createComment = comment => dispatch => (
+    CommentAPIUtil.createComment(comment).then(comment => (
+        dispatch(receiveComment(comment))
+        ))
+);
+
+export const deleteComment = (commentId, annotationId, trackId) => dispatch => (
+    CommentAPIUtil.deleteComment(commentId).then(() => (
+        dispatch(removeComment(commentId, annotationId, trackId))
+    ))
+);
+
+export const updateComment = (comment, commentId) => dispatch => (
+    CommentAPIUtil.updateComment(comment, commentId).then(comment => (
+        dispatch(receiveComment(comment))
     ))
 );
 

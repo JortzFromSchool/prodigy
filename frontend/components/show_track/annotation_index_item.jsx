@@ -1,6 +1,8 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import ShowComments from './show_comments';
+import CommentFormContainer from './comment_form_container';
 
 class AnnotationIndexItem extends React.Component {
     constructor(props) {
@@ -10,16 +12,12 @@ class AnnotationIndexItem extends React.Component {
     }
 
     handleUpvote(){
-        // console.log("handleUpvote");
-        console.log(this.props.annotation);
         const upvotesArr = Object.values(this.props.annotation.upvotes);
-        // console.log(upvotesArr);
         let upvoteExists = false;
         let upvoteValue = 0;
         let upvoteId = -1;
         for(let i = 0; i < upvotesArr.length; i++){
             if(this.props.session.id && upvotesArr[i].author.id == this.props.session.id){
-                console.log("existing upvote found");
                 upvoteExists = true;
                 upvoteValue = upvotesArr[i].value;
                 upvoteId = upvotesArr[i].id;
@@ -78,7 +76,6 @@ class AnnotationIndexItem extends React.Component {
         }
         else if(this.props.session.id && upvoteExists && upvoteValue > 0 && upvoteId >= 0){
             //upvote is positive and user is logged in
-            console.log("changing to downvote")
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
@@ -98,9 +95,16 @@ class AnnotationIndexItem extends React.Component {
         return valuesSum < 0 ? `-${valuesSum}` : `+${valuesSum}`;
     }
 
+    handleComments(comments) {
+        if(comments){
+            return <ShowComments comments={comments} trackId={this.props.trackId} annotationId={this.props.annotation.id}/>
+        };
+    }
+
     render() {
-        const {author, annotation_string, annotation_body, upvotes} = this.props.annotation;
+        const {author, annotation_string, annotation_body, upvotes, comments} = this.props.annotation;
         const index = this.props.index;
+        console.log(comments);
 
         return (
             <div className="annotation-index-item">
@@ -122,6 +126,8 @@ class AnnotationIndexItem extends React.Component {
                             <FontAwesomeIcon icon={faThumbsDown} />
                         </div>
                     </div>
+                    {this.handleComments(comments)}
+                    <CommentFormContainer trackId={this.props.trackId} annotationId={this.props.annotation.id}/>
                 </div>
             </div>
         )

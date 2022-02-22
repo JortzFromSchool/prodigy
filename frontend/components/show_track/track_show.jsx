@@ -22,6 +22,12 @@ class TrackShow extends React.Component {
         };
     }
 
+    handleAnnotations (annotations) {
+        if (annotations) {
+            return <ShowAnnotations annotations={annotations} trackId={this.props.trackId}/>
+        };
+    }
+
     render() {
         
         if(this.props.tracks[this.props.trackId]) {
@@ -50,7 +56,7 @@ class TrackShow extends React.Component {
                             </div>
                             <div className="show-right-column">
                                 <div className="show-description">{description}</div>
-                                <ShowAnnotations annotations={annotations} trackId={this.props.trackId}/>
+                                {this.handleAnnotations(annotations)}
                             </div>
                         </div>
                     </div>

@@ -16,8 +16,8 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        @upvote = current_user.upvotes.find(params[:id])
-        @upvote.destroy
+        @comment = current_user.comments.find(params[:id])
+        @comment.destroy
     end
 
     private
