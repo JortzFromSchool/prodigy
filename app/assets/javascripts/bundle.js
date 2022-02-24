@@ -15309,12 +15309,14 @@ var CommentForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "textarea",
         value: this.state.body,
-        onChange: this.update('body')
+        onChange: this.update('body'),
+        className: "comment-body-input"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "comment-form-submit-button"
+        className: "comment-form-submit-button-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
-        value: "Create Comment"
+        value: "Create Comment",
+        className: "comment-form-submit-button"
       }))));
     }
   }]);
@@ -15459,7 +15461,7 @@ var CommentIndexItem = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-index-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "comment-header"
+        className: "comment-index-item-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "comment-author"
       }, author.username), this.handleX()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

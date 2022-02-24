@@ -41,10 +41,11 @@ class CommentForm extends React.Component{
                         <input type='textarea'
                             value={this.state.body}
                             onChange={this.update('body')}
+                            className='comment-body-input'
                         />
                     </div>
-                    <div className='comment-form-submit-button'>
-                        <input type="submit" value="Create Comment" />
+                    <div className='comment-form-submit-button-container'>
+                        <input type="submit" value="Create Comment" className='comment-form-submit-button'/>
                     </div>
                 </form>
             </div>

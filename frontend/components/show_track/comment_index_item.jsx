@@ -31,7 +31,7 @@ class CommentIndexItem extends React.Component {
 
         return (
             <div className='comment-index-item'>
-                <div className='comment-header'>
+                <div className='comment-index-item-header'>
                     <div className='comment-author'>{author.username}</div>
                     {this.handleX()}
                 </div>

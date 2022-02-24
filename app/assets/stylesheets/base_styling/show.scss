@@ -258,3 +258,61 @@
 .annotation-downthumb-container {
     margin-top: 6px;
 }
+
+.comments-container {
+    background: $annotation-background-color;
+    margin-top: 10px;
+}
+
+.comments-header {
+    font-size: .8rem;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+.comment-index-item-header {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: flex-end;
+    width: inherit;
+}
+
+.comment-author {
+    font-size: .6rem;
+    font-weight: bold;
+}
+
+.comment-body {
+    padding: 5px;
+    font-size: .8rem;
+}
+
+.comment-form-header {
+    font-size: .8rem;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.comment-body-container {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.comment-form-submit-button-container{
+    padding: 5px;
+}
+
+.comment-body-input {
+    width: 100%;
+}
