@@ -271,6 +271,10 @@
     padding-bottom: 10px;
 }
 
+.comment-index-item {
+    border-top: solid black 1px;
+
+}
 .comment-index-item-header {
     display: flex;
     flex-direction: row;
@@ -287,6 +291,10 @@
 .comment-body {
     padding: 5px;
     font-size: .8rem;
+}
+
+.comment-form-container {
+    border-top: solid black 1px;
 }
 
 .comment-form-header {
