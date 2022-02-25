@@ -87,12 +87,14 @@ class AnnotationIndexItem extends React.Component {
     }
 
     upvotesCount(upvotes) {
-        const upvotesArr = Object.values(upvotes);
-        let valuesSum = 0;
-        for(let i = 0; i < upvotesArr.length; i++){
-            valuesSum += upvotesArr[i].value
+        if(upvotes){
+            const upvotesArr = Object.values(upvotes);
+            let valuesSum = 0;
+            for(let i = 0; i < upvotesArr.length; i++){
+                valuesSum += upvotesArr[i].value
+            }
+            return valuesSum < 0 ? `-${valuesSum}` : `+${valuesSum}`;
         }
-        return valuesSum < 0 ? `-${valuesSum}` : `+${valuesSum}`;
     }
 
     handleComments(comments) {

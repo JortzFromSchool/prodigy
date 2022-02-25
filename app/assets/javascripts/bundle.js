@@ -15088,14 +15088,16 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "upvotesCount",
     value: function upvotesCount(upvotes) {
-      var upvotesArr = Object.values(upvotes);
-      var valuesSum = 0;
+      if (upvotes) {
+        var upvotesArr = Object.values(upvotes);
+        var valuesSum = 0;
 
-      for (var i = 0; i < upvotesArr.length; i++) {
-        valuesSum += upvotesArr[i].value;
+        for (var i = 0; i < upvotesArr.length; i++) {
+          valuesSum += upvotesArr[i].value;
+        }
+
+        return valuesSum < 0 ? "-".concat(valuesSum) : "+".concat(valuesSum);
       }
-
-      return valuesSum < 0 ? "-".concat(valuesSum) : "+".concat(valuesSum);
     }
   }, {
     key: "handleComments",
