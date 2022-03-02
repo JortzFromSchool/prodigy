@@ -23,9 +23,6 @@ class CommentForm extends React.Component{
         formData.append('comment[author_id]', this.state.author_id);
         formData.append('comment[annotation_id]', this.state.annotation_id);
         formData.append('comment[body]', this.state.body);
-        console.log(`authorId = ${this.state.author_id}`);
-        console.log(`annotationId = ${this.state.annotation_id}`);
-        console.log(`body = ${this.state.body}`);
         this.props.createComment(formData)
             .then(() => this.props.fetchTrack(this.props.trackId));
     }

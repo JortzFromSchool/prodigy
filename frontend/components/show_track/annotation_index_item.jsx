@@ -28,7 +28,6 @@ class AnnotationIndexItem extends React.Component {
             this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
                 .then(() => this.props.fetchTrack(this.props.trackId));
         }
-        // console.log(`upvoteExists = ${upvoteExists}`);
         else if(!upvoteExists && this.props.session.id){
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
@@ -106,7 +105,6 @@ class AnnotationIndexItem extends React.Component {
     render() {
         const {author, annotation_string, annotation_body, upvotes, comments} = this.props.annotation;
         const index = this.props.index;
-        console.log(comments);
 
         return (
             <div className="annotation-index-item">

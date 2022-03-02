@@ -12,7 +12,6 @@ class CommentIndexItem extends React.Component {
     handleDelete(){
         const comment = this.props.comment;
         if(this.props.session.id == comment.author.id){
-            console.log(comment.id);
             this.props.deleteComment(comment.id, comment.annotation.id, comment.annotation.track_id)
                 .then(() => this.props.fetchTrack(this.props.trackId));
         };
