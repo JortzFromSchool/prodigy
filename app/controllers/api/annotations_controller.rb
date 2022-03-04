@@ -16,6 +16,15 @@ class Api::AnnotationsController < ApplicationController
         end
     end
 
+    def update
+        @annotation = current_user.annotations.find(params[:id])
+        if @annotation.update(annotation_params)
+            render :show
+        else
+            render json: @annotation.errors.full_messages, status: :unprocessable_entity
+        end
+    end
+
     def destroy
         @annotation = current_user.annotations.find(params[:id])
         @annotation.destroy

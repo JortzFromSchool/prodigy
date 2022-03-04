@@ -9,6 +9,12 @@ export const openModal = (modal, annotateString, trackId) => ({
   }
 );
 
+export const openEditModal = (modal, annotation) => ({
+  type: OPEN_MODAL,
+  modal,
+  annotation
+})
+
 export const closeModal = () => (
   {
     type: CLOSE_MODAL

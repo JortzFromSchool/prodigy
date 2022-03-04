@@ -6,6 +6,7 @@ import * as CommentAPIUtil from '../util/comment_api_util';
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ANNOTATION = "RECEIVE_ANNOTATION";
+export const REMOVE_ANNOTATION = "REMOVE_ANNOTATION";
 export const RECEIVE_UPVOTE = "RECEIVE_UPVOTE";
 export const REMOVE_UPVOTE = "REMOVE_UPVOTE";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
@@ -26,6 +27,12 @@ export const receiveAnnotation = ({annotation}) => ({
     type: RECEIVE_ANNOTATION,
     annotation
 });
+
+export const removeAnnotation = (annotationId, trackId) => ({
+    type: REMOVE_ANNOTATION,
+    annotationId,
+    trackId
+})
 
 export const receiveUpvote = ({upvote}) => ({
     type: RECEIVE_UPVOTE,
@@ -54,6 +61,18 @@ export const removeComment = (commentId, annotationId, trackId) => ({
 export const createAnnotation = annotation => dispatch => (
     AnnotationAPIUtil.createAnnotation(annotation).then(annotation => (
         dispatch(receiveAnnotation(annotation))
+    ))
+);
+
+export const updateAnnotation = annotation => dispatch => (
+    AnnotationAPIUtil.updateAnnotation(annotation).then(updatedAnnotation => (
+        dispatch(receiveAnnotation(updatedAnnotation))
+    ))
+);
+
+export const deleteAnnotation = (annotationId, trackId) => dispatch => (
+    AnnotationAPIUtil.deleteAnnotation(annotationId).then(() => (
+        dispatch(removeAnnotation(annotationId, trackId))
     ))
 );
 
@@ -94,9 +113,10 @@ export const updateComment = (comment, commentId) => dispatch => (
 );
 
 export const fetchTracks = () => dispatch => (
-    TrackAPIUtil.fetchTracks().then(tracks => (
-        dispatch(receiveTracks(tracks))
-    ))
+    TrackAPIUtil.fetchTracks().then(tracks => 
+        {console.log(tracks);
+        dispatch(receiveTracks(tracks));
+        })
 );
 
 export const fetchTrack = id => dispatch => (

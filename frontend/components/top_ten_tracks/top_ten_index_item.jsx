@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEye} from '@fortawesome/free-solid-svg-icons';
 
 class TopTenIndexItem extends React.Component {
     constructor(props) {
@@ -17,7 +19,10 @@ class TopTenIndexItem extends React.Component {
                         <img className="index-item index-artwork" src={album_url}/>
                         <span className="index-item index-title">{title}</span>
                         <span className="index-item index-artist">{artist.username}</span>
-                        <span className="index-item index-views">{views}</span>
+                        <div className='index-item index-views'>
+                            <FontAwesomeIcon icon={faEye} />
+                            <span className="index-item-views">{views}</span>
+                        </div>
                     </Link>
                 </div>
             </div>

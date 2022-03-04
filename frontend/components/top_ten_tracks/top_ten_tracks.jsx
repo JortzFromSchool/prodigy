@@ -10,8 +10,9 @@ class TopTenTracks extends React.Component {
         this.props.fetchTracks();
     }
 
-    asArray(tracks) {
-        return Object.keys(tracks).map(track => tracks[track])
+    asArrayByViews(tracks) {
+        return Object.values(tracks)
+        .sort((a, b) => (a.views < b.views) ? 1 : -1)
     };
 
     render() {
@@ -19,7 +20,7 @@ class TopTenTracks extends React.Component {
             <div className="top-ten-container">
                 <h1>CHARTS</h1>
                 <ul>
-                    {this.asArray(this.props.tracks).map((track, index) => {
+                    {this.asArrayByViews(this.props.tracks).map((track, index) => {
                         return(
                             <li key={`index-${index}`}>
                                 <TopTenIndexItem

@@ -154,6 +154,12 @@ h1 {
 
 .index-views {
     width: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.index-item-views {
+    padding-left: 5px;
 }
 
 .session-errors {

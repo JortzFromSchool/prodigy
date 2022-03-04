@@ -1,4 +1,4 @@
-import { RECEIVE_TRACK, RECEIVE_TRACKS, RECEIVE_ANNOTATION, RECEIVE_UPVOTE, REMOVE_UPVOTE, RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/track_actions";
+import { RECEIVE_TRACK, RECEIVE_TRACKS, RECEIVE_ANNOTATION, RECEIVE_UPVOTE, REMOVE_UPVOTE, RECEIVE_COMMENT, REMOVE_COMMENT, REMOVE_ANNOTATION } from "../actions/track_actions";
 
 const tracksReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -12,6 +12,9 @@ const tracksReducer = (state = {}, action) => {
             return Object.assign({}, state, newTrack);
         case RECEIVE_ANNOTATION:
             newState[annotation.track.id].annotations[annotation.id] = annotation;
+            return newState;
+        case REMOVE_ANNOTATION:
+            delete newState[trackId].annotations[annotationId];
             return newState;
         case RECEIVE_UPVOTE:
             newState[upvote.annotation.track_id].annotations[upvote.annotation.id].upvotes[upvote.id] = upvote;

@@ -23,6 +23,14 @@ export const createAnnotation = annotationForm => (
     })
 );
 
+export const updateAnnotation = annotation => (
+    $.ajax({
+        method: 'PATCH',
+        url: `api/annotations/${annotation.id}`,
+        data: annotation
+    })
+)
+
 export const deleteAnnotation = id => (
     $.ajax({
         method: 'DELETE',
