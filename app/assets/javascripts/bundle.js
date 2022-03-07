@@ -16079,6 +16079,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       password: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemo = _this.handleDemo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -16097,6 +16098,24 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.handleForm(user);
+    }
+  }, {
+    key: "handleDemo",
+    value: function handleDemo(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.setState({
+        username: "Demo User",
+        password: "123456"
+      }, function () {
+        var demo = {
+          username: _this3.state.username,
+          password: _this3.state.password
+        };
+
+        _this3.props.handleForm(demo);
+      });
     }
   }, {
     key: "renderErrors",
@@ -16173,7 +16192,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         type: "submit",
         value: this.props.formType
-      }))), this.whichLink()));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "demo-button",
+        onClick: this.handleDemo
+      }, "Demo User"))), this.whichLink()));
     }
   }]);
 
@@ -17581,6 +17603,8 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "show-left-column"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+          className: "show-instructions"
+        }, "Highlight text while signed in to annotate."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
           className: "show-lyrics",
           onMouseUp: this.handleHighlight
         }, lyrics)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

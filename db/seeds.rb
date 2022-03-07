@@ -44,6 +44,11 @@ artist5.password = "123456"
 artist5.reset_session_token!
 artist5.save!
 
+demoUser = User.create({username: "Demo User"})
+demoUser.password = "123456"
+demoUser.reset_session_token!
+demoUser.save!
+
 red_lyrics = "[Verse 1]
 I walked through the door with you, the air was cold
 But something 'bout it felt like home somehow

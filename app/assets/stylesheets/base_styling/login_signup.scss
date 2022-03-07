@@ -60,4 +60,8 @@
 .login-form-submit-button {
     padding-left: 10px;
     padding-bottom: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
