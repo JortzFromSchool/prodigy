@@ -156,8 +156,18 @@
 }
 
 .close-icon {
-    margin: 5px;
+    padding: 3px;
+    margin: 3px;
     border: solid black 1px;
+    text-align: center;
+}
+
+.close-icon:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+.close-icon:active {
+    background: rgba(0,0,0,0.7);
 }
 
 .annotation-form-inputs {
@@ -214,13 +224,14 @@
 
 .annotation-index-edit {
     font-size: .7rem;
+    padding: 3px;
 }
 
 .annotation-index-edit:hover {
     background: rgba(0,0,0,0.2);
 }
 
-.annotation-index-item:active {
+.annotation-index-edit:active {
     background: rgba(0,0,0,0.7);
 }
 
@@ -337,8 +348,9 @@
 }
 
 .comment-x {
+    padding: 3px;
     font-size: .8rem;
-    padding-left: 5px;
+    text-align: center;
 }
 
 .comment-form {
