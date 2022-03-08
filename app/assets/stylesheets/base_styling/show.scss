@@ -212,6 +212,26 @@
     padding: 5px;
 }
 
+.annotation-index-edit {
+    font-size: .7rem;
+}
+
+.annotation-index-edit:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+.annotation-index-item:active {
+    background: rgba(0,0,0,0.7);
+}
+
+.comment-x:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+.comment-x:active {
+    background: rgba(0,0,0,0.7);
+}
+
 .annotation-index-info {
     display: flex;
     flex-direction: column;

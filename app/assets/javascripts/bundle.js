@@ -16683,7 +16683,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
           onClick: function onClick() {
             return _this4.props.openEdit(_this4.props.annotation);
           }
-        }, "Edit");
+        }, "edit");
       }
     }
   }, {

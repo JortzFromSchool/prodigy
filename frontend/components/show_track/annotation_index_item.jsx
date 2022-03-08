@@ -146,7 +146,7 @@ class AnnotationIndexItem extends React.Component {
     handleEdit() {
         if(this.props.session.id == this.props.annotation.author.id){
             return (
-                <div className="annotation-index-edit" onClick={() => this.props.openEdit(this.props.annotation)}>Edit</div>
+                <div className="annotation-index-edit" onClick={() => this.props.openEdit(this.props.annotation)}>edit</div>
             )
         }
     }
