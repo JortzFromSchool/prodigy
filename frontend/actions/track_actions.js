@@ -114,8 +114,7 @@ export const updateComment = (comment, commentId) => dispatch => (
 
 export const fetchTracks = () => dispatch => (
     TrackAPIUtil.fetchTracks().then(tracks => 
-        {console.log(tracks);
-        dispatch(receiveTracks(tracks));
+        {dispatch(receiveTracks(tracks));
         })
 );
 
