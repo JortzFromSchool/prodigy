@@ -43,8 +43,7 @@ class AnnotationIndexItem extends React.Component {
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', 1);
-            this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
-                .then(() => this.props.createUpvote(upvoteData))
+            this.props.updateUpvote(upvoteData, upvoteId)
                 .then(() => this.props.fetchTrack(this.props.trackId));
         };
     }
@@ -81,8 +80,7 @@ class AnnotationIndexItem extends React.Component {
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
             upvoteData.append('upvote[value]', -1);
-            this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id)
-                .then(() => this.props.createUpvote(upvoteData))
+            this.props.updateUpvote(upvoteData, upvoteId)
                 .then(() => this.props.fetchTrack(this.props.trackId));
         };
     }

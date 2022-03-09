@@ -15690,7 +15690,6 @@ var updateComment = function updateComment(comment, commentId) {
 var fetchTracks = function fetchTracks() {
   return function (dispatch) {
     return _util_track_api_util__WEBPACK_IMPORTED_MODULE_0__.fetchTracks().then(function (tracks) {
-      console.log(tracks);
       dispatch(receiveTracks(tracks));
     });
   };
@@ -16520,9 +16519,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
         _upvoteData.append('upvote[value]', 1);
 
-        this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
-          return _this2.props.createUpvote(_upvoteData);
-        }).then(function () {
+        this.props.updateUpvote(_upvoteData, upvoteId).then(function () {
           return _this2.props.fetchTrack(_this2.props.trackId);
         });
       }
@@ -16575,9 +16572,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
 
         _upvoteData2.append('upvote[value]', -1);
 
-        this.props.deleteUpvote(upvoteId, this.props.annotation.id, this.props.annotation.track.id).then(function () {
-          return _this3.props.createUpvote(_upvoteData2);
-        }).then(function () {
+        this.props.updateUpvote(_upvoteData2, upvoteId).then(function () {
           return _this3.props.fetchTrack(_this3.props.trackId);
         });
       }
@@ -16789,6 +16784,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteUpvote: function deleteUpvote(upvoteId, annotationId, trackId) {
       return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.deleteUpvote)(upvoteId, annotationId, trackId));
+    },
+    updateUpvote: function updateUpvote(upvote, upvoteId) {
+      return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.updateUpvote)(upvote, upvoteId));
     },
     fetchTrack: function fetchTrack(trackId) {
       return dispatch((0,_actions_track_actions__WEBPACK_IMPORTED_MODULE_1__.fetchTrack)(trackId));

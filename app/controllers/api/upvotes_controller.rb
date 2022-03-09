@@ -20,6 +20,7 @@ class Api::UpvotesController < ApplicationController
     end
 
     def update
+        @upvote = current_user.upvotes.find(params[:id])
         if @upvote.update(upvote_params)
             render :show
         else
