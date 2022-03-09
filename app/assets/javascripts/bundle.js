@@ -15416,6 +15416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CLOSE_MODAL": () => (/* binding */ CLOSE_MODAL),
 /* harmony export */   "openModal": () => (/* binding */ openModal),
 /* harmony export */   "openEditModal": () => (/* binding */ openEditModal),
+/* harmony export */   "openLogInModal": () => (/* binding */ openLogInModal),
 /* harmony export */   "closeModal": () => (/* binding */ closeModal)
 /* harmony export */ });
 var OPEN_MODAL = 'OPEN_MODAL';
@@ -15433,6 +15434,12 @@ var openEditModal = function openEditModal(modal, annotation) {
     type: OPEN_MODAL,
     modal: modal,
     annotation: annotation
+  };
+};
+var openLogInModal = function openLogInModal(modal) {
+  return {
+    type: OPEN_MODAL,
+    modal: "login"
   };
 };
 var closeModal = function closeModal() {
@@ -15887,8 +15894,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _show_track_annotation_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../show_track/annotation_form_container */ "./frontend/components/show_track/annotation_form_container.js");
 /* harmony import */ var _show_track_annotation_update_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../show_track/annotation_update_container */ "./frontend/components/show_track/annotation_update_container.js");
+
 
 
 
@@ -15917,6 +15926,18 @@ function Modal(_ref) {
       component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_show_track_annotation_update_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
         annotation: modal.annotation
       });
+      break;
+
+    case 'login':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "login-prompt"
+      }, "Please ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        to: "/signup",
+        onClick: closeModal
+      }, "Sign Up"), " or ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        to: "/login",
+        onClick: closeModal
+      }, "Sign In"), " to annotate.");
       break;
 
     default:
@@ -16013,6 +16034,9 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     handleForm: function handleForm(user) {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(user));
+    },
+    handleDemoForm: function handleDemoForm(user) {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(user));
     }
   };
@@ -16113,7 +16137,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           password: _this3.state.password
         };
 
-        _this3.props.handleForm(demo);
+        _this3.props.handleDemoForm(demo);
       });
     }
   }, {
@@ -16236,6 +16260,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     handleForm: function handleForm(user) {
       return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.signup)(user));
+    },
+    handleDemoForm: function handleDemoForm(user) {
+      return dispatch((0,_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__.login)(user));
     }
   };
 };
@@ -16503,6 +16530,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this2.props.fetchTrack(_this2.props.trackId);
         });
       } else if (!upvoteExists && this.props.session.id) {
+        //logged in, upvote does not exist
         var upvoteData = new FormData();
         upvoteData.append('upvote[author_id]', this.props.session.id);
         upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
@@ -16511,6 +16539,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this2.props.fetchTrack(_this2.props.trackId);
         });
       } else if (this.props.session.id && upvoteExists && upvoteValue < 0 && upvoteId >= 0) {
+        // logged in, upvote is a negative value and must be changed to positive
         var _upvoteData = new FormData();
 
         _upvoteData.append('upvote[author_id]', this.props.session.id);
@@ -16563,7 +16592,7 @@ var AnnotationIndexItem = /*#__PURE__*/function (_React$Component) {
           return _this3.props.fetchTrack(_this3.props.trackId);
         });
       } else if (this.props.session.id && upvoteExists && upvoteValue > 0 && upvoteId >= 0) {
-        //upvote is positive and user is logged in
+        //upvote is positive, must be changed to negative and user is logged in
         var _upvoteData2 = new FormData();
 
         _upvoteData2.append('upvote[author_id]', this.props.session.id);
@@ -17449,7 +17478,8 @@ var mapStateToProps = function mapStateToProps(state, _ref) {
   var trackId = parseInt(match.params.trackId);
   return {
     trackId: trackId,
-    tracks: state.entities.tracks
+    tracks: state.entities.tracks,
+    session: state.session
   };
 };
 
@@ -17460,6 +17490,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     annotateForm: function annotateForm(annotateString, trackId) {
       return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.openModal)('annotate', annotateString, trackId));
+    },
+    loginPrompt: function loginPrompt() {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.openLogInModal)());
     }
   };
 };
@@ -17532,13 +17565,17 @@ var TrackShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleHighlight",
     value: function handleHighlight() {
-      var highlightedText = window.getSelection().toString();
+      if (!this.props.session.id) {
+        this.props.loginPrompt();
+      } else {
+        var highlightedText = window.getSelection().toString();
 
-      if (highlightedText) {
-        this.props.annotateForm(highlightedText, this.props.trackId);
+        if (highlightedText) {
+          this.props.annotateForm(highlightedText, this.props.trackId);
+        }
+
+        ;
       }
-
-      ;
     }
   }, {
     key: "handleAnnotations",

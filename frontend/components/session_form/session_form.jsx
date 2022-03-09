@@ -33,7 +33,7 @@ class SessionForm extends React.Component {
       username: this.state.username,
       password: this.state.password
     }
-    this.props.handleForm(demo)})
+    this.props.handleDemoForm(demo)})
   }
 
 

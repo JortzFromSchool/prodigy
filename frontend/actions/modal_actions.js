@@ -13,7 +13,12 @@ export const openEditModal = (modal, annotation) => ({
   type: OPEN_MODAL,
   modal,
   annotation
-})
+});
+
+export const openLogInModal = (modal) => ({
+  type: OPEN_MODAL,
+  modal: "login"
+});
 
 export const closeModal = () => (
   {

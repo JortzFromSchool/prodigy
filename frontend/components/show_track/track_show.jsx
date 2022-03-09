@@ -16,10 +16,16 @@ class TrackShow extends React.Component {
     }
 
     handleHighlight () {
-        const highlightedText = window.getSelection().toString();
-        if(highlightedText){
-            this.props.annotateForm(highlightedText, this.props.trackId);
-        };
+        if (!this.props.session.id){
+            this.props.loginPrompt();
+        }
+        else {
+            const highlightedText = window.getSelection().toString();
+            if(highlightedText){
+                this.props.annotateForm(highlightedText, this.props.trackId);
+            };
+        }
+        
     }
 
     handleAnnotations (annotations) {

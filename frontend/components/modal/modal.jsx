@@ -1,6 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import AnnotationFormContainer from "../show_track/annotation_form_container";
 import AnnotationUpdateFormContainer from '../show_track/annotation_update_container';
 
@@ -14,7 +15,10 @@ function Modal({modal, closeModal}) {
       component = <AnnotationFormContainer annotationString={modal.annotateString} trackId={modal.trackId}/>;
       break;
     case 'annotation-update':
-      component = <AnnotationUpdateFormContainer annotation={modal.annotation} />
+      component = <AnnotationUpdateFormContainer annotation={modal.annotation} />;
+      break;
+    case 'login':
+      component = <div className='login-prompt'>Please <Link to="/signup" onClick={closeModal}>Sign Up</Link> or <Link to="/login" onClick={closeModal}>Sign In</Link> to annotate.</div>;
       break;
     default:
       return null;
