@@ -31,6 +31,7 @@ class AnnotationIndexItem extends React.Component {
                 .then(() => this.props.fetchTrack(this.props.trackId));
         }
         else if(!upvoteExists && this.props.session.id){
+            //logged in, upvote does not exist
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
@@ -39,6 +40,7 @@ class AnnotationIndexItem extends React.Component {
                 .then(() => this.props.fetchTrack(this.props.trackId));
         }
         else if(this.props.session.id && upvoteExists && upvoteValue < 0 && upvoteId >= 0){
+            // logged in, upvote is a negative value and must be changed to positive
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
@@ -75,7 +77,7 @@ class AnnotationIndexItem extends React.Component {
                 .then(() => this.props.fetchTrack(this.props.trackId));
         }
         else if(this.props.session.id && upvoteExists && upvoteValue > 0 && upvoteId >= 0){
-            //upvote is positive and user is logged in
+            //upvote is positive, must be changed to negative and user is logged in
             const upvoteData = new FormData();
             upvoteData.append('upvote[author_id]', this.props.session.id);
             upvoteData.append('upvote[annotation_id]', this.props.annotation.id);
