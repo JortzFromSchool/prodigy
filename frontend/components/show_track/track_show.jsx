@@ -58,7 +58,7 @@ class TrackShow extends React.Component {
                     <div className="show-body">
                         <div className="show-body-content-container">
                             <div className="show-left-column">
-                                <span className="show-instructions">Highlight text while signed in to annotate.</span>
+                                <span className="show-instructions">Highlight lyrics to annotate.</span>
                                 <span className="show-lyrics" onMouseUp={this.handleHighlight}>{lyrics}</span>
                             </div>
                             <div className="show-right-column">
